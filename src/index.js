@@ -3,6 +3,6 @@ import { render } from 'react-dom'
 import CommentBox from './components/CommentBox'
 
 render(
-  <CommentBox />,
+  <CommentBox url='/comments.json'/>,
   document.getElementById('container')
 )

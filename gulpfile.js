@@ -14,7 +14,7 @@ function errorHandler(err) {
 gulp.task('browser-sync', function () {
     browserSync({
         proxy: {
-            target: 'http://localhost:3000'
+            target: 'http://localhost:3000/src/index.html'
         },
         port: 8080
     })
@@ -40,9 +40,9 @@ gulp.task('server', function () {
 // ファイル監視
 // ファイルに更新があったらビルドしてブラウザをリロードする
 gulp.task('watch', function () {
-    gulp.watch('./src/index.js', ['build'])
-    gulp.watch('./src/index.html', ['build'])
+    gulp.watch('./src/*.js', ['build'])
     gulp.watch('./src/components/*.js', ['build'])
+    gulp.watch('./src/*.html', ['build'])
 })
 
 // gulpコマンドで起動したときのデフォルトタスク

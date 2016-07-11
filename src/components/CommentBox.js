@@ -41,12 +41,22 @@ export default class CommentBox extends Component {
     setInterval(this.loadCommentsFromServer.bind(this), this.props.pollInterval)
   }
   render() {
-    return (
-      <div className='commentBox'>
-        <CommentForm onCommentSubmit={this.handleCommentSubmit.bind(this) } />
-        <CommentList data={this.state.data}/>
-      </div>
-    )
+    let isBox1 = false
+    if (isBox1) {
+      return (
+        <div className='commentBox'>
+          <CommentForm onCommentSubmit={this.handleCommentSubmit.bind(this) } />
+          <CommentList data={this.state.data}/>
+        </div>
+      )
+    } else {
+      return (
+        <div className='commentBox'>
+          <CommentList data={this.state.data}/>
+          <CommentForm onCommentSubmit={this.handleCommentSubmit.bind(this) } />
+        </div>
+      )
+    }
   }
 }
 

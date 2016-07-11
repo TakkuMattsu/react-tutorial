@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import Comment from './Comment'
 
 /**
@@ -7,7 +7,7 @@ import Comment from './Comment'
 export default class CommentList extends Component {
   render() {
     const commentNodes = this.props.data.map((comment) => {
-      return(
+      return (
         <Comment author={comment.author}>{comment.text}</Comment>
       )
     })
@@ -17,4 +17,8 @@ export default class CommentList extends Component {
       </div>
     )
   }
+}
+
+CommentList.propTypes = {
+  data: PropTypes.map
 }

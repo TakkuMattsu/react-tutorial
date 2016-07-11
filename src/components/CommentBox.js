@@ -13,7 +13,7 @@ export default class CommentBox extends Component {
       data: []
     }
   }
-  componentDidMount() {
+  loadCommentsFromServer() {
     $.ajax({
       url: this.props.url,
       dataType: 'json',
@@ -23,6 +23,10 @@ export default class CommentBox extends Component {
         console.error(this.props.url, status, err.toString())
       }
     })
+  }
+  componentDidMount() {
+    this.loadCommentsFromServer()
+    setInterval(this.loadCommentsFromServer.bind(this), this.props.pollInterval)
   }
   render() {
     return (
@@ -35,5 +39,6 @@ export default class CommentBox extends Component {
 }
 
 CommentBox.propTypes = {
-  url: PropTypes.string.isRequired
+  url: PropTypes.string.isRequired,
+  pollInterval: PropTypes.number.isRequired
 }

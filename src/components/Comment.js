@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 
 /**
  * コメント
@@ -14,4 +14,9 @@ export default class Comment extends Component {
       </div>
     )
   }
+}
+
+Comment.propTypes = {
+  author: PropTypes.string,
+  children: PropTypes.string
 }

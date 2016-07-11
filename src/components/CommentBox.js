@@ -19,7 +19,19 @@ export default class CommentBox extends Component {
       dataType: 'json',
       cache: false,
       success: (data) => { this.setState({ data: data }) },
-      error:( xhr, status, err) => {
+      error: (xhr, status, err) => {
+        console.error(this.props.url, status, err.toString())
+      }
+    })
+  }
+  handleCommentSubmit(comment) {
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      type: 'POST',
+      data: comment,
+      success: (data) => { this.setState({ data: data }) },
+      error: (xhr, status, err) => {
         console.error(this.props.url, status, err.toString())
       }
     })
@@ -31,8 +43,8 @@ export default class CommentBox extends Component {
   render() {
     return (
       <div className='commentBox'>
+        <CommentForm onCommentSubmit={this.handleCommentSubmit.bind(this) } />
         <CommentList data={this.state.data}/>
-        <CommentForm />
       </div>
     )
   }

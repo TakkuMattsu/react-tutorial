@@ -20,5 +20,5 @@ export default class CommentList extends Component {
 }
 
 CommentList.propTypes = {
-  data: PropTypes.map
+  data: PropTypes.array
 }

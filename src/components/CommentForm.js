@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom'
  * コメントフォーム
  */
 export default class CommentForm extends Component {
+
   handleSubmit(e) {
     e.preventDefault()
     const author = ReactDOM.findDOMNode(this.refs.author).value.trim()
@@ -27,6 +28,6 @@ export default class CommentForm extends Component {
   }
 }
 
-CommentForm.PropTypes = {
-  onCommentSubmit: PropTypes.any
+CommentForm.propTypes = {
+  onCommentSubmit: PropTypes.func
 }
